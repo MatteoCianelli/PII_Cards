@@ -19,19 +19,22 @@ namespace Ucu.Poo.Exercise
         public static void Main()
         {
             Card card = new Card(Rank.Ace, Suit.Spades);
+            SymbolFormat symbolFormat = new SymbolFormat(card);
 
-            Print(card, new ConsolePrinter());
-            Print(card, new FilePrinter());
+            // Print(card, new ConsolePrinter());
+            // Print(card, new FilePrinter());
+            Print(symbolFormat, new ConsolePrinter());
+            Print(symbolFormat, new FilePrinter());
         }
 
         /// <summary>
         /// Imprime una carta usando la impresora indicada.
         /// </summary>
-        /// <param name="card">La carta a imprimir.</param>
+        /// <param name="cardContent">El contenido de la carta a imprimir.</param>
         /// <param name="printer">La impresora a usar.</param>
-        private static void Print(Card card, IPrinter printer)
+        private static void Print(ICardContent cardContent, IPrinter printer)
         {
-            printer.PrintCard(card);
+            printer.PrintCard(cardContent);
         }
     }
 }
